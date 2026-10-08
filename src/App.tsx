@@ -9,6 +9,8 @@ type Appointment = { id: string; appointment_at: string; customer_name: string; 
 type Service = { id: string; name: string; description: string; duration: number; price: number }
 type AvailableSlot = { barber_id: string; barber_name: string; time: string }
 
+const logoUrl = `${import.meta.env.BASE_URL}marco-beltran-logo.png`
+
 const initialServices: Service[] = [
   { id: '1', name: 'Corte Clásico', description: '', duration: 30, price: 150 },
   { id: '2', name: 'Corte + Barba', description: '', duration: 45, price: 220 },
@@ -183,7 +185,7 @@ function App() {
   return (
     <div className="site-shell">
       <header className="topbar">
-        <a className="brand" href="#inicio" onClick={() => setPage('home')} aria-label="Marco Beltrán Barbería, inicio"><img className="brand-logo" src="/marco-beltran-logo.png" alt="" /><span className="brand-word">MARCO BELTRÁN<span>BARBERÍA</span></span></a>
+        <a className="brand" href="#inicio" onClick={() => setPage('home')} aria-label="Marco Beltrán Barbería, inicio"><img className="brand-logo" src={logoUrl} alt="" /><span className="brand-word">MARCO BELTRÁN<span>BARBERÍA</span></span></a>
         {page === 'home' ? <><nav className="main-nav" aria-label="Navegación principal"><a href="#servicios">Servicios</a><a href="#reserva">Reservar</a><a href="#visitanos">Visítanos</a></nav><button className="owner-link" type="button" onClick={openAdmin}><LockKeyhole size={15} /><span>Acceso dueño</span></button></> : <button className="back-link" type="button" onClick={() => setPage('home')}><ArrowLeft size={16} /> Volver al sitio</button>}
       </header>
       {page === 'home' ? <main>
@@ -211,12 +213,12 @@ function App() {
           </form>
         </section>
         <section className="visit-section" id="visitanos"><div className="visit-mark"><Scissors size={25} /></div><div className="visit-copy"><span className="eyebrow">NOS ENCUENTRAS EN</span><h2>El barrio se ve<br /><em>mejor desde aquí.</em></h2></div><div className="visit-details"><p><MapPin size={17} /> Av. Álvaro Obregón 142, Roma Norte<br /><span>Ciudad de México, CDMX</span></p><p><Clock3 size={17} /> Lun — Sáb <span>09:00 — 19:00</span></p><a href="https://maps.google.com/?q=Av.+Alvaro+Obregon+142+Roma+Norte+CDMX" target="_blank" rel="noreferrer">Cómo llegar <ArrowUpRight size={15} /></a></div><span className="visit-watermark" aria-hidden="true">M</span></section>
-        <footer className="footer"><a className="brand footer-brand" href="#inicio"><img className="brand-logo" src="/marco-beltran-logo.png" alt="" /><span className="brand-word">MARCO BELTRÁN<span>BARBERÍA</span></span></a><span>Un buen corte. Y a seguir con tu día.</span><a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram"><ArrowUpRight size={18} /></a><small>© {new Date().getFullYear()} Marco Beltrán Barbería</small></footer>
+        <footer className="footer"><a className="brand footer-brand" href="#inicio"><img className="brand-logo" src={logoUrl} alt="" /><span className="brand-word">MARCO BELTRÁN<span>BARBERÍA</span></span></a><span>Un buen corte. Y a seguir con tu día.</span><a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram"><ArrowUpRight size={18} /></a><small>© {new Date().getFullYear()} Marco Beltrán Barbería</small></footer>
       </main> : <main className="admin-page">
         {!authReady ? <div className="admin-loading"><span className="loader" />Comprobando sesión…</div> : !isOwner ? <section className="login-shell">
           <div className="login-visual">
             <div className="login-shapes" aria-hidden="true"><span className="login-shape login-shape-orb" /><span className="login-shape login-shape-ring" /><span className="login-shape login-shape-diamond" /><span className="login-shape login-shape-pill" /></div>
-            <div className="login-brandline"><img className="login-emblem" src="/marco-beltran-logo.png" alt="Logotipo de Marco Beltrán Barbería" /><span>MARCO BELTRÁN<small>BARBERÍA · CDMX</small></span></div>
+            <div className="login-brandline"><img className="login-emblem" src={logoUrl} alt="Logotipo de Marco Beltrán Barbería" /><span>MARCO BELTRÁN<small>BARBERÍA · CDMX</small></span></div>
             <div className="login-editorial"><span className="eyebrow"><span className="eyebrow-line" /> ESPACIO PRIVADO</span><h1>Las llaves<br />del <em>local.</em></h1><p>Tu negocio, tus citas y tu tiempo, en un solo lugar.</p></div>
             <div className="login-perks"><span><CalendarDays size={15} /> Agenda organizada</span><span><ShieldCheck size={15} /> Acceso protegido</span></div>
             <span className="login-vertical">SOLO PERSONAL AUTORIZADO</span>

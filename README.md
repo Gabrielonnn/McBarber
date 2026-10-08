@@ -25,3 +25,7 @@ Sitio de reservas con React, Vite y Express. Express sirve la web y la API; Supa
 La web y su API se sirven en `http://localhost:3001`. El backend comprueba las columnas de `servicios`, `barberos` y `citas` antes de iniciar. La clave secreta de Supabase solo se usa en Express y nunca se envía al navegador.
 
 Los horarios se ofrecen por barbero según los servicios y las citas existentes. Los datos de contacto del cliente se guardan en `citas.notas_cliente`, ya que el esquema permite una cita pública sin `cliente_id`.
+
+## Publicación en GitHub Pages
+
+GitHub Pages solo aloja el frontend estático; no ejecuta Express ni puede responder a las rutas `/api/*`. El workflow compila y publica `dist`, por lo que la interfaz se mostrará, pero los servicios, horarios, reservas e inicio de sesión necesitan la API de Express y las variables secretas de `.env`. Para que toda la aplicación funcione, despliega el proyecto completo en un servicio que ejecute Node.js; GitHub Pages por sí solo no puede alojar el backend.
